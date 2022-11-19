@@ -3,8 +3,10 @@ package com.example.nshindarev.springfullappl.customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
+@RequestMapping(path = "api/v1/customers")
 @RestController
 public class CustomerController {
 
@@ -16,12 +18,17 @@ public class CustomerController {
     }
 
     @GetMapping
-    public List<Customer> getCustomer(){
-        return customerService.getCustomer();
+    public List<Customer> getCustomers(){
+        return customerService.getCustomers();
+    }
+
+    @GetMapping(path = "{customerId}")
+    public Customer getCustomer(@PathVariable("customerId") Long id){
+        return customerService.getCustomer(id)
     }
 
     @PostMapping
-    public void createNewCustomer(@RequestBody Customer customer){
+    public void createNewCustomer(@Valid @RequestBody Customer customer){
         System.out.println("create ..." + customer.toString());
     }
 
