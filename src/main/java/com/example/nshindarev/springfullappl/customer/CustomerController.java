@@ -1,5 +1,7 @@
 package com.example.nshindarev.springfullappl.customer;
 
+import com.example.nshindarev.springfullappl.exceptions.APIException;
+import com.example.nshindarev.springfullappl.exceptions.APIRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +26,14 @@ public class CustomerController {
 
     @GetMapping(path = "{customerId}")
     public Customer getCustomer(@PathVariable("customerId") Long id){
-        return customerService.getCustomer(id)
+        return customerService.getCustomer(id);
+    }
+
+    @GetMapping(path = "{customerId}/exception")
+    public Customer getCustomerException(@PathVariable("customerId") Long id){
+        throw new APIRequestException(
+                "APIRequestException for customer with id "+id
+        );
     }
 
     @PostMapping
