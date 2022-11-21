@@ -1,5 +1,6 @@
 package com.example.nshindarev.springfullappl.exceptions;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.http.HttpStatus;
 
 import java.time.ZonedDateTime;
