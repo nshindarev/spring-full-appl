@@ -1,12 +1,15 @@
 package com.example.nshindarev.springfullappl.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 import org.springframework.http.HttpStatus;
 
 import java.time.ZonedDateTime;
 
 // what client will see
 // payload for our client
+
+@Data
 public class APIException extends RuntimeException{
     private final String message;
     private final Throwable throwable;
@@ -20,30 +23,4 @@ public class APIException extends RuntimeException{
         this.zonedDateTime = zonedDateTime;
     }
 
-    @Override
-    public String getMessage() {
-        return message;
-    }
-
-    public Throwable getThrowable() {
-        return throwable;
-    }
-
-    public HttpStatus getHttpStatus() {
-        return httpStatus;
-    }
-
-    public ZonedDateTime getZonedDateTime() {
-        return zonedDateTime;
-    }
-
-    @Override
-    public String toString() {
-        return "APIException{" +
-                "message='" + message + '\'' +
-                ", throwable=" + throwable +
-                ", httpStatus=" + httpStatus +
-                ", zonedDateTime=" + zonedDateTime +
-                '}';
-    }
 }
