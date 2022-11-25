@@ -2,6 +2,8 @@ package com.example.nshindarev.springfullappl.customer;
 
 import com.example.nshindarev.springfullappl.exceptions.APIException;
 import com.example.nshindarev.springfullappl.exceptions.APIRequestException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +13,8 @@ import java.util.List;
 @RequestMapping(path = "api/v1/customers")
 @RestController
 public class CustomerController {
+
+    private static final Logger log = LoggerFactory.getLogger(CustomerController.class);
 
     private CustomerService customerService;
 
